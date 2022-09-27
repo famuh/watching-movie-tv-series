@@ -2,22 +2,22 @@
 //
 //     final tvSeries = tvSeriesFromJson(jsonString);
 
+import 'package:ditonton/domain/entities/tvSeries.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-TvSeries tvSeriesFromJson(String str) => TvSeries.fromJson(json.decode(str));
+TvSeriesModel tvSeriesFromJson(String str) => TvSeriesModel.fromJson(json.decode(str));
 
-String tvSeriesToJson(TvSeries data) => json.encode(data.toJson());
+String tvSeriesToJson(TvSeriesModel data) => json.encode(data.toJson());
 
-class TvSeries {
-  TvSeries({
+class TvSeriesModel {
+  TvSeriesModel({
     required this.backdropPath,
     required this.firstAirDate,
     required this.genreIds,
     required this.id,
-    required this.name,
+    required this.title,
     required this.originCountry,
-    required this.originalLanguage,
     required this.originalName,
     required this.overview,
     required this.popularity,
@@ -30,9 +30,8 @@ class TvSeries {
   final DateTime firstAirDate;
   final List<int> genreIds;
   final int id;
-  final String name;
+  final String title;
   final List<String> originCountry;
-  final String originalLanguage;
   final String originalName;
   final String overview;
   final double popularity;
@@ -40,14 +39,13 @@ class TvSeries {
   final double voteAverage;
   final int voteCount;
 
-  factory TvSeries.fromJson(Map<String, dynamic> json) => TvSeries(
+  factory TvSeriesModel.fromJson(Map<String, dynamic> json) => TvSeriesModel(
         backdropPath: json["backdrop_path"],
         firstAirDate: DateTime.parse(json["first_air_date"]),
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
-        name: json["name"],
+        title: json["name"],
         originCountry: List<String>.from(json["origin_country"].map((x) => x)),
-        originalLanguage: json["original_language"],
         originalName: json["original_name"],
         overview: json["overview"],
         popularity: json["popularity"].toDouble(),
@@ -62,9 +60,8 @@ class TvSeries {
             "${firstAirDate.year.toString().padLeft(4, '0')}-${firstAirDate.month.toString().padLeft(2, '0')}-${firstAirDate.day.toString().padLeft(2, '0')}",
         "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
         "id": id,
-        "name": name,
+        "title": title,
         "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
-        "original_language": originalLanguage,
         "original_name": originalName,
         "overview": overview,
         "popularity": popularity,
@@ -72,4 +69,21 @@ class TvSeries {
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
+  
+  TvSeries toEntity(){
+    return TvSeries(
+      backdropPath: this.backdropPath,
+      firstAirDate: this.firstAirDate,
+      genreIds: this.genreIds,
+      id: this.id,
+      originCountry: this.originCountry,
+      originalName: this.originalName,
+      overview: this.overview,
+      popularity: this.popularity,
+      posterPath: this.posterPath,
+      title: this.title,
+      voteAverage: this.voteAverage,
+      voteCount: this.voteCount
+    );
+  }
 }
