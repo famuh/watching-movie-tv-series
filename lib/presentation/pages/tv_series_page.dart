@@ -58,7 +58,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                     Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.topRatedMoviesState;
+                final state = data.topRatedTvSeriesState;
                 if (state == RequestState.Loading) {
                   return Center(
                     child: CircularProgressIndicator(),

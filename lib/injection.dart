@@ -3,7 +3,9 @@ import 'package:ditonton/data/datasources/movie_local_data_source.dart';
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart';
 import 'package:ditonton/data/datasources/tv_series_remote_data_source.dart';
 import 'package:ditonton/data/repositories/movie_repository_impl.dart';
+import 'package:ditonton/data/repositories/tv_series_repository_impl.dart';
 import 'package:ditonton/domain/repositories/movie_repository.dart';
+import 'package:ditonton/domain/repositories/tv_series_repository.dart';
 import 'package:ditonton/domain/usecases/get_movie_detail.dart';
 import 'package:ditonton/domain/usecases/get_movie_recommendations.dart';
 import 'package:ditonton/domain/usecases/get_now_playing_movies.dart';
@@ -20,8 +22,9 @@ import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/popular_tv_series_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/top_rated_tv_series.dart';
+import 'package:ditonton/presentation/provider/top_rated_tv_series_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:http/http.dart' as http;
@@ -78,7 +81,9 @@ void init() {
     () => TopRatedTvSeriesNotifier(
       getTopRatedTvSeries: locator())
     );
-
+  locator.registerFactory(
+    () => PopularTvSeriesNotifier(locator())
+    );
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
   locator.registerLazySingleton(() => GetPopularMovies(locator()));
@@ -101,6 +106,13 @@ void init() {
       localDataSource: locator(),
     ),
   );
+  locator.registerLazySingleton<TvSeriesRepository>(
+    () => TvSeriesRepositoryImpl(
+      remoteDataSource: locator(),
+      localDataSource: locator(),
+    ),
+  );
+
 
   // data sources
   locator.registerLazySingleton<MovieRemoteDataSource>(

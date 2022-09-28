@@ -19,6 +19,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
+import 'presentation/provider/popular_tv_series_notifier.dart';
+import 'presentation/provider/top_rated_tv_series_notifier.dart';
+import 'presentation/provider/tv_series_list_notifier.dart';
+
 void main() {
   di.init();
   runApp(MyApp());
@@ -47,6 +51,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
         ),
+        
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TvSeriesListNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TopRatedTvSeriesNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<PopularTvSeriesNotifier>(),
+        ),
+
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

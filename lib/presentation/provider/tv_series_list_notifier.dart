@@ -20,7 +20,7 @@ class TvSeriesListNotifier extends ChangeNotifier {
   List<TvSeries> get topRatedTvSeries => _topRatedTvSeries;
 
   RequestState _topRatedTvSeriesState = RequestState.Empty;
-  RequestState get topRatedMoviesState => _topRatedTvSeriesState;
+  RequestState get topRatedTvSeriesState => _topRatedTvSeriesState;
 
   String _message = '';
   String get message => _message;
