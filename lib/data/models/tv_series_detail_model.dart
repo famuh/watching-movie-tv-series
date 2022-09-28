@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-TvSeriesDetail tvSeriesFromJson(String str) => TvSeriesDetail.fromJson(json.decode(str));
+TvSeriesDetailResponse tvSeriesFromJson(String str) => TvSeriesDetailResponse.fromJson(json.decode(str));
 
-String tvSeriesToJson(TvSeriesDetail data) => json.encode(data.toJson());
+String tvSeriesToJson(TvSeriesDetailResponse data) => json.encode(data.toJson());
 
-class TvSeriesDetail {
-  TvSeriesDetail({
+class TvSeriesDetailResponse {
+  TvSeriesDetailResponse({
     required this.adult,
     required this.backdropPath,
     required this.createdBy,
@@ -73,7 +73,7 @@ class TvSeriesDetail {
   final double voteAverage;
   final int voteCount;
 
-  factory TvSeriesDetail.fromJson(Map<String, dynamic> json) => TvSeriesDetail(
+  factory TvSeriesDetailResponse.fromJson(Map<String, dynamic> json) => TvSeriesDetailResponse(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         createdBy: List<CreatedBy>.from(
