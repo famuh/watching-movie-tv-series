@@ -1,18 +1,11 @@
-// To parse this JSON data, do
-//
-//     final tvSeries = tvSeriesFromJson(jsonString);
 
 import 'package:ditonton/domain/entities/tvSeries.dart';
-import 'package:meta/meta.dart';
-import 'dart:convert';
+import 'package:equatable/equatable.dart';
 
-TvSeriesModel tvSeriesFromJson(String str) => TvSeriesModel.fromJson(json.decode(str));
 
-String tvSeriesToJson(TvSeriesModel data) => json.encode(data.toJson());
-
-class TvSeriesModel {
+class TvSeriesModel extends Equatable{
   TvSeriesModel({
-    required this.backdropPath,
+    this.backdropPath,
     required this.firstAirDate,
     required this.genreIds,
     required this.id,
@@ -26,7 +19,7 @@ class TvSeriesModel {
     required this.voteCount,
   });
 
-  final String backdropPath;
+  final String? backdropPath;
   final DateTime firstAirDate;
   final List<int> genreIds;
   final int id;
@@ -86,4 +79,20 @@ class TvSeriesModel {
       voteCount: this.voteCount
     );
   }
+
+  @override
+  List<Object?> get props => [
+    backdropPath,
+    firstAirDate,
+    genreIds,
+    id,
+    originCountry,
+    originalName,
+    overview,
+    popularity,
+    posterPath,
+    title,
+    voteAverage,
+    voteCount
+  ];
 }

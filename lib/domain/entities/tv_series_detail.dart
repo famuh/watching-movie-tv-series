@@ -19,7 +19,7 @@ class TvSeriesDetail extends Equatable {
 
   final String backdropPath;
   final DateTime firstAirDate;
-  final List<int> genreIds;
+  final List<Genre> genreIds;
   final int id;
   final String title;
   final List<String> originCountry;

@@ -5,9 +5,10 @@ import '../models/tv_series_table.dart';
 
 abstract class TvSeriesLocalDataSource {
   Future<String> insertWatchlistForTvSeries(TvSeriesTable tvSeries);
-  // Future<String> removeWatchlist(MovieTable tvSeries);
-  // Future<MovieTable?> getTvSeriesById(int id);
-  // Future<List<MovieTable>> getWatchlistMovies();
+  Future<String> removeWatchlistForTvSeries(TvSeriesTable tvSeries);
+  Future<TvSeriesTable?> getTvSeriesById(int id);
+  Future<List<TvSeriesTable>> getWatchlistTvSeries();
+  
 }
 
 class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
@@ -25,30 +26,30 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
     }
   }
 
-  // @override
-  // Future<String> removeWatchlist(TvSeriesTable movie) async {
-  //   try {
-  //     await databaseHelper.removeWatchlist(movie);
-  //     return 'Removed from Watchlist';
-  //   } catch (e) {
-  //     throw DatabaseException(e.toString());
-  //   }
-  // }
+  @override
+  Future<String> removeWatchlistForTvSeries(TvSeriesTable tvSeries) async {
+    try {
+      await databaseHelper.removeWatchlistForTvSeries(tvSeries);
+      return 'Removed from Watchlist';
+    } catch (e) {
+      throw DatabaseException(e.toString());
+    }
+  }
 
-  // @override
-  // Future<MovieTable?> getMovieById(int id) async {
-  //   final result = await databaseHelper.getMovieById(id);
-  //   if (result != null) {
-  //     return MovieTable.fromMap(result);
-  //   } else {
-  //     return null;
-  //   }
-  // }
+  @override
+  Future<TvSeriesTable?> getTvSeriesById(int id) async {
+    final result = await databaseHelper.getTvSeriesById(id);
+    if (result != null) {
+      return TvSeriesTable.fromMap(result);
+    } else {
+      return null;
+    }
+  }
 
-  // @override
-  // Future<List<TvSeriesTable>> getWatchlistMovies() async {
-  //   final result = await databaseHelper.getWatchlistMovies();
-  //   return result.map((data) => TvSeriesTable.fromMap(data)).toList();
-  // }
+  @override
+  Future<List<TvSeriesTable>> getWatchlistTvSeries() async {
+    final result = await databaseHelper.getWatchlistMovies();
+    return result.map((data) => TvSeriesTable.fromMap(data)).toList();
+  }
 
 }

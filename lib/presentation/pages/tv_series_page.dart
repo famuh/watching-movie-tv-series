@@ -52,23 +52,24 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   return Text('Failed');
                 }
               }),
-              _buildSubHeading(
-                title: 'Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
-              ),
-              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.topRatedTvSeriesState;
-                if (state == RequestState.Loading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state == RequestState.Loaded) {
-                  return TvSeriesList(data.topRatedTvSeries);
-                } else {
-                  return Text('Failed');
-                }
-              }),
+              // _buildSubHeading(
+              //   title: 'Top Rated',
+              //   onTap: () =>
+              //       Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
+              // ),
+              // Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+              //   final state = data.topRatedTvSeriesState;
+              //   if (state == RequestState.Loading) {
+              //     return Center(
+              //       child: CircularProgressIndicator(),
+              //     );
+              //   } else if (state == RequestState.Loaded) {
+              //     return TvSeriesList(data.topRatedTvSeries);
+              //   } else {
+              //     return Text('Failed');
+              //   }
+              // }
+              // ),
             ],
           ),
         );
@@ -101,7 +102,6 @@ class TvSeriesList extends StatelessWidget {
   final List<TvSeries> tvSerieses;
 
   TvSeriesList(this.tvSerieses);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -123,7 +123,7 @@ class TvSeriesList extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${tvSeries.posterPath}',
+                  imageUrl: '$BASE_IMAGE_URL${tvSeries.backdropPath}',
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),

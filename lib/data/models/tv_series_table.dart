@@ -1,5 +1,6 @@
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv_series_detail.dart';
 import 'package:equatable/equatable.dart';
 
 class TvSeriesTable extends Equatable {
@@ -15,7 +16,7 @@ class TvSeriesTable extends Equatable {
     required this.overview,
   });
 
-  factory TvSeriesTable.fromEntity(MovieDetail movie) => TvSeriesTable(
+  factory TvSeriesTable.fromEntity(TvSeriesDetail movie) => TvSeriesTable(
         id: movie.id,
         title: movie.title,
         posterPath: movie.posterPath,

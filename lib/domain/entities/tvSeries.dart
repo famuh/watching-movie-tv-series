@@ -1,14 +1,10 @@
-// To parse this JSON data, do
-//
-//     final tvSeries = tvSeriesFromJson(jsonString);
 
-import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
 class TvSeries extends Equatable{
   TvSeries({
-    required this.backdropPath,
+    this.backdropPath,
     required this.firstAirDate,
     required this.genreIds,
     required this.id,

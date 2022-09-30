@@ -1,8 +1,7 @@
-import 'dart:convert';
 
-TvSeriesDetailResponse tvSeriesFromJson(String str) => TvSeriesDetailResponse.fromJson(json.decode(str));
 
-String tvSeriesToJson(TvSeriesDetailResponse data) => json.encode(data.toJson());
+import 'package:ditonton/data/models/genre_model.dart';
+import 'package:ditonton/domain/entities/tv_series_detail.dart';
 
 class TvSeriesDetailResponse {
   TvSeriesDetailResponse({
@@ -45,7 +44,7 @@ class TvSeriesDetailResponse {
   final List<CreatedBy> createdBy;
   final List<dynamic> episodeRunTime;
   final DateTime firstAirDate;
-  final List<Genre> genres;
+  final List<GenreModel> genres;
   final String homepage;
   final int id;
   final bool inProduction;
@@ -81,7 +80,7 @@ class TvSeriesDetailResponse {
         episodeRunTime:
             List<dynamic>.from(json["episode_run_time"].map((x) => x)),
         firstAirDate: DateTime.parse(json["first_air_date"]),
-        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+        genres: List<GenreModel>.from(json["genres"].map((x) => GenreModel.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
         inProduction: json["in_production"],
@@ -155,6 +154,23 @@ class TvSeriesDetailResponse {
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
+
+      TvSeriesDetail toEntity(){
+        return TvSeriesDetail(
+          backdropPath: this.backdropPath, 
+          firstAirDate: this.firstAirDate, 
+          genreIds: this.genres.map((genre) => genre.toEntity()).toList(), 
+          id: this.id, 
+          title: this.name, 
+          originCountry: this.originCountry, 
+          originalName: this.originalName, 
+          overview: this.overview, 
+          popularity: this.popularity, 
+          posterPath: this.posterPath, 
+          voteAverage: this.voteAverage, 
+          voteCount: this.voteCount
+          );
+      }
 }
 
 class CreatedBy {
@@ -186,26 +202,6 @@ class CreatedBy {
         "name": name,
         "gender": gender,
         "profile_path": profilePath,
-      };
-}
-
-class Genre {
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  final int id;
-  final String name;
-
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-        id: json["id"],
-        name: json["name"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
       };
 }
 

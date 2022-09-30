@@ -9,7 +9,7 @@ class TvSeriesResponse extends Equatable {
   factory TvSeriesResponse.fromJson(Map<String, dynamic> json) => TvSeriesResponse(
         tvSeriesList: List<TvSeriesModel>.from((json["results"] as List)
             .map((x) => TvSeriesModel.fromJson(x))
-            .where((element) => element.posterPath != '')),
+            .where((element) => element.posterPath != null)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -17,5 +17,5 @@ class TvSeriesResponse extends Equatable {
       };
 
   @override
-  List<Object> get props => [tvSeriesList];
+  List<Object?> get props => [tvSeriesList];
 }
