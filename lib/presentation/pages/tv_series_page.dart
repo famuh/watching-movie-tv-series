@@ -1,14 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvSeries.dart';
+import 'package:ditonton/presentation/pages/popular_tv_series_page.dart';
 import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
-import 'movie_detail_page.dart';
-import 'popular_movies_page.dart';
-import 'top_rated_movies_page.dart';
+import 'tv_series_detail_page.dart';
 
 class TvSeriesPage extends StatefulWidget {
   static const ROUTE_NAME = '/tv-series';
@@ -38,7 +37,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               _buildSubHeading(
                 title: 'Popular',
                 onTap: () =>
-                    Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.popularMoviesState;
@@ -116,7 +115,7 @@ class TvSeriesList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  MovieDetailPage.ROUTE_NAME,
+                  TvSeriesDetailPage.ROUTE_NAME,
                   arguments: tvSeries.id,
                 );
               },
