@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvSeries.dart';
 import 'package:ditonton/presentation/pages/popular_tv_series_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_tv_series_page.dart';
 import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +37,13 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildSubHeading(
+                title: 'Now Playing',
+                onTap: () =>
+                    Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME),
+              ),
+
+              // POPULAR
+              _buildSubHeading(
                 title: 'Popular',
                 onTap: () =>
                     Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME),
@@ -51,24 +60,26 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   return Text('Failed');
                 }
               }),
-              // _buildSubHeading(
-              //   title: 'Top Rated',
-              //   onTap: () =>
-              //       Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
-              // ),
-              // Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-              //   final state = data.topRatedTvSeriesState;
-              //   if (state == RequestState.Loading) {
-              //     return Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return TvSeriesList(data.topRatedTvSeries);
-              //   } else {
-              //     return Text('Failed');
-              //   }
-              // }
-              // ),
+
+              // TOP RATED
+              _buildSubHeading(
+                title: 'Top Rated',
+                onTap: () =>
+                    Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME),
+              ),
+              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+                final state = data.topRatedTvSeriesState;
+                if (state == RequestState.Loading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state == RequestState.Loaded) {
+                  return TvSeriesList(data.topRatedTvSeries);
+                } else {
+                  return Text('Failed');
+                }
+              }
+              ),
             ],
           ),
         );

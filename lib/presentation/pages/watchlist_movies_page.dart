@@ -33,13 +33,37 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
         .fetchWatchlistMovies();
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Watchlist'),
       ),
-      body: Padding(
+      body: MovieWatchlist()
+      
+    );
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+}
+
+class MovieWatchlist extends StatefulWidget {
+  MovieWatchlist({Key? key}) : super(key: key);
+
+  @override
+  State<MovieWatchlist> createState() => _MovieWatchlistState();
+}
+
+class _MovieWatchlistState extends State<MovieWatchlist> {
+  @override
+  Widget build(BuildContext context) {
+    return  Padding(
         padding: const EdgeInsets.all(8.0),
         child: Consumer<WatchlistMovieNotifier>(
           builder: (context, data, child) {
@@ -63,13 +87,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
             }
           },
         ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    routeObserver.unsubscribe(this);
-    super.dispose();
+      );
+    
   }
 }
