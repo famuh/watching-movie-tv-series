@@ -36,13 +36,13 @@ class TvSeriesDetailResponse extends Equatable {
   final bool adult;
   final String backdropPath;
   final List<dynamic> episodeRunTime;
-  final DateTime firstAirDate;
+  final String firstAirDate;
   final List<GenreModel> genres;
   final String homepage;
   final int id;
   final bool inProduction;
   final List<String> languages;
-  final DateTime lastAirDate;
+  final String lastAirDate;
   final String name;
 
   final int numberOfEpisodes;
@@ -68,14 +68,14 @@ class TvSeriesDetailResponse extends Equatable {
 
         episodeRunTime:
             List<dynamic>.from(json["episode_run_time"].map((x) => x)),
-        firstAirDate: DateTime.parse(json["first_air_date"]),
+        firstAirDate: json["first_air_date"],
         genres: List<GenreModel>.from(
             json["genres"].map((x) => GenreModel.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
         inProduction: json["in_production"],
         languages: List<String>.from(json["languages"].map((x) => x)),
-        lastAirDate: DateTime.parse(json["last_air_date"]),
+        lastAirDate: json["last_air_date"],
         name: json["name"],
         numberOfEpisodes: json["number_of_episodes"],
         numberOfSeasons: json["number_of_seasons"],
@@ -99,14 +99,14 @@ class TvSeriesDetailResponse extends Equatable {
         "backdrop_path": backdropPath,
         "episode_run_time": List<dynamic>.from(episodeRunTime.map((x) => x)),
         "first_air_date":
-            "${firstAirDate.year.toString().padLeft(4, '0')}-${firstAirDate.month.toString().padLeft(2, '0')}-${firstAirDate.day.toString().padLeft(2, '0')}",
+            "${firstAirDate.padLeft(4, '0')}-${firstAirDate.padLeft(2, '0')}-${firstAirDate.padLeft(2, '0')}",
         "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
         "homepage": homepage,
         "id": id,
         "in_production": inProduction,
         "languages": List<dynamic>.from(languages.map((x) => x)),
         "last_air_date":
-            "${lastAirDate.year.toString().padLeft(4, '0')}-${lastAirDate.month.toString().padLeft(2, '0')}-${lastAirDate.day.toString().padLeft(2, '0')}",
+            "${lastAirDate.padLeft(4, '0')}-${lastAirDate.padLeft(2, '0')}-${lastAirDate.padLeft(2, '0')}",
         "name": name,
 
         "number_of_episodes": numberOfEpisodes,
@@ -182,20 +182,20 @@ class Season {
     required this.id,
     required this.name,
     required this.overview,
-    required this.posterPath,
+    this.posterPath,
     required this.seasonNumber,
   });
 
-  final DateTime airDate;
+  final String airDate;
   final int episodeCount;
   final int id;
   final String name;
   final String overview;
-  final String posterPath;
+  final String? posterPath;
   final int seasonNumber;
 
   factory Season.fromJson(Map<String, dynamic> json) => Season(
-        airDate: DateTime.parse(json["air_date"]),
+        airDate: json["air_date"],
         episodeCount: json["episode_count"],
         id: json["id"],
         name: json["name"],
@@ -206,7 +206,7 @@ class Season {
 
   Map<String, dynamic> toJson() => {
         "air_date":
-            "${airDate.year.toString().padLeft(4, '0')}-${airDate.month.toString().padLeft(2, '0')}-${airDate.day.toString().padLeft(2, '0')}",
+            "${airDate.padLeft(4, '0')}-${airDate.padLeft(2, '0')}-${airDate.padLeft(2, '0')}",
         "episode_count": episodeCount,
         "id": id,
         "name": name,
