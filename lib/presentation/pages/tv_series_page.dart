@@ -12,7 +12,7 @@ import '../../common/constants.dart';
 import '../../common/state_enum.dart';
 import 'about_page.dart';
 import 'tv_series_detail_page.dart';
-import 'watchlist_movies_page.dart';
+import 'watchlist_page.dart';
 
 class TvSeriesPage extends StatefulWidget {
   static const ROUTE_NAME = '/tv-series';
@@ -52,7 +52,6 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               title: Text('Movies'),
               onTap: () {
                 Navigator.pushNamed(context, MoviePage.ROUTE_NAME);
-                Navigator.pop(context);
               },
             ),
             ListTile(
