@@ -5,14 +5,17 @@ import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class WatchlistMoviesPage extends StatefulWidget {
+import '../../common/constants.dart';
+import '../provider/watchlist_tv_series_notifier.dart';
+
+class WatchlistPage extends StatefulWidget {
   static const ROUTE_NAME = '/watchlist-movie';
 
   @override
-  _WatchlistMoviesPageState createState() => _WatchlistMoviesPageState();
+  _WatchlistPageState createState() => _WatchlistPageState();
 }
 
-class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
+class _WatchlistPageState extends State<WatchlistPage>
     with RouteAware {
   @override
   void initState() {
@@ -20,6 +23,10 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
     Future.microtask(() =>
         Provider.of<WatchlistMovieNotifier>(context, listen: false)
             .fetchWatchlistMovies());
+    Future.microtask(() =>
+        Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
+            .fetchWatchlistTvSeries());
+    
   }
 
   @override
@@ -31,6 +38,9 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   void didPopNext() {
     Provider.of<WatchlistMovieNotifier>(context, listen: false)
         .fetchWatchlistMovies();
+    Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
+        .fetchWatchlistTvSeries();
+    
   }
 
   
@@ -41,7 +51,38 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
       appBar: AppBar(
         title: Text('Watchlist'),
       ),
-      body: MovieWatchlist()
+      body:
+      DefaultTabController(
+                length: 2,
+                initialIndex: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      child: TabBar(
+                        labelColor: kMikadoYellow,
+                        unselectedLabelColor: Colors.white,
+                        tabs: [
+                          Tab(text: 'Movie'),
+                          Tab(text: 'Tv Series'),
+                        ],
+                      ),
+                    ),
+                    TabBarView(
+                        children: [
+                          Container(
+                            child: Text('Uhuyy YGY'),
+                          ),
+                          Container(
+                            child: Text('Uhuyy YGY'),
+                          ),
+                        ],
+                      ),
+
+                  ],
+                ))
+      
+      //MovieWatchlist()
       
     );
   }
