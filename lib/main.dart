@@ -9,12 +9,9 @@ import 'package:ditonton/presentation/pages/movie_search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
 import 'package:ditonton/presentation/pages/tv_series_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
-import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
-import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
+
+import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +19,16 @@ import 'package:ditonton/injection.dart' as di;
 
 import 'presentation/pages/top_rated_tv_series_page.dart';
 import 'presentation/pages/tv_series_detail_page.dart';
-import 'presentation/provider/popular_tv_series_notifier.dart';
-import 'presentation/provider/top_rated_tv_series_notifier.dart';
-import 'presentation/provider/tv_series_detail_notifier.dart';
-import 'presentation/provider/tv_series_list_notifier.dart';
-import 'presentation/provider/watchlist_tv_series_notifier.dart';
+import 'presentation/provider/movie/movie_detail_notifier.dart';
+import 'presentation/provider/movie/movie_list_notifier.dart';
+import 'presentation/provider/movie/movie_search_notifier.dart';
+import 'presentation/provider/movie/popular_movies_notifier.dart';
+import 'presentation/provider/tv series/popular_tv_series_notifier.dart';
+import 'presentation/provider/tv series/top_rated_tv_series_notifier.dart';
+import 'presentation/provider/tv series/tv_series_detail_notifier.dart';
+import 'presentation/provider/tv series/tv_series_list_notifier.dart';
+import 'presentation/provider/tv series/watchlist_tv_series_notifier.dart';
+
 
 void main() {
   di.init();

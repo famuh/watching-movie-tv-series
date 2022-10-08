@@ -4,12 +4,12 @@ import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/popular_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/movie_search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_tv_series_page.dart';
-import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
+import '../provider/tv series/tv_series_list_notifier.dart';
 import 'about_page.dart';
 import 'tv_series_detail_page.dart';
 import 'watchlist_page.dart';

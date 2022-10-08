@@ -3,7 +3,7 @@ import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/popular_tv_series_notifier.dart';
+import '../provider/tv series/popular_tv_series_notifier.dart';
 
 class PopularTvSeriesPage extends StatefulWidget {
   static const ROUTE_NAME = '/popular-tv-series';

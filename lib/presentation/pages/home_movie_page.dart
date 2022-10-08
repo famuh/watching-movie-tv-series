@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
 import '../../domain/entities/movie.dart';
-import '../provider/movie_list_notifier.dart';
+import '../provider/movie/movie_list_notifier.dart';
 import 'movie_detail_page.dart';
 
 class MoviePage extends StatefulWidget {

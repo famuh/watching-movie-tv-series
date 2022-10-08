@@ -1,8 +1,7 @@
 import 'dart:async';
-
-import 'package:ditonton/data/models/movie_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
 import 'package:sqflite/sqflite.dart';
+import '../../models/movie/movie_table.dart';
+import '../../models/tv series/tv_series_table.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;

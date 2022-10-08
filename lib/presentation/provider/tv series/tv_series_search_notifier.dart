@@ -1,8 +1,6 @@
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/tvSeries.dart';
-import 'package:ditonton/domain/usecases/search_movies.dart';
-import 'package:ditonton/domain/usecases/search_tv_series.dart';
+import 'package:ditonton/domain/usecases/tv%20series/search_tv_series.dart';
 import 'package:flutter/foundation.dart';
 
 class TvSeriesSearchNotifier extends ChangeNotifier {
