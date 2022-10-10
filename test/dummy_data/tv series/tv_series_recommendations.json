@@ -1,0 +1,32 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/path.jpg",
+            "id": 1,
+            "name": "Title",
+            "original_language": "en",
+            "original_name": "Original Title",
+            "overview": "Overview",
+            "poster_path": "/path.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "popularity": 1,
+            "first_air_date": "2020-05-05",
+            "vote_average": 1,
+            "vote_count": 1,
+            "origin_country": [
+                "US"
+            ]
+        }
+        
+    ],
+    "total_pages": 1,
+    "total_results": 10
+}

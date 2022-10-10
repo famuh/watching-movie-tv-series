@@ -1,8 +1,12 @@
 import 'package:ditonton/data/models/movie/movie_table.dart';
+import 'package:ditonton/data/models/tv%20series/tv_series_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tvSeries.dart';
+import 'package:ditonton/domain/entities/tv_series_detail.dart';
 
+// MOVIE
 final testMovie = Movie(
   adult: false,
   backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
@@ -56,4 +60,56 @@ final testMovieMap = {
   'overview': 'overview',
   'posterPath': 'posterPath',
   'title': 'title',
+};
+
+// TV SERIES
+final testTvSeries = TvSeries(
+    firstAirDate: '2021-11-06',
+    genreIds: [16, 10765, 10759, 18],
+    id: 94605,
+    title: 'Arcane',
+    originCountry: ["US"],
+    originalName: 'Arcane',
+    overview:
+        'Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.',
+    popularity: 134.783,
+    voteAverage: 8.7,
+    voteCount: 2593);
+
+final testTvSeriesList = [testTvSeries];
+
+final testTvSeriesDetail = TvSeriesDetail(
+    backdropPath: 'backdropPath',
+    firstAirDate: 'firstAirDate',
+    genreIds: [Genre(id: 1, name: 'Action')],
+    id: 1,
+    title: 'Title',
+    originCountry: ["OriginCountry"],
+    originalName: 'OriginalTitle',
+    overview: 'Overview',
+    popularity: 1,
+    posterPath: 'posterpath',
+    voteAverage: 1,
+    voteCount: 1
+    );
+
+final testWatchlistTvSeries =
+    TvSeries.watchList(
+      id: 1, 
+      overview: 'Overview', 
+      posterPath: 'posterPath', 
+      title: 'Title');
+
+final testTvSeriesTable =
+    TvSeriesTable(
+      id: 1, 
+      title: 'Title', 
+      posterPath: 'posterPath', 
+      overview: 'Overview');
+
+final testTvSeriesMap = {
+  'id': 1,
+  'title': 'title',
+  'posterpath': 'posterpath',
+  'overview': 'overview'
 };
