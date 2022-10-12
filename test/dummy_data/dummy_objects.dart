@@ -64,6 +64,7 @@ final testMovieMap = {
 
 // TV SERIES
 final testTvSeries = TvSeries(
+  backdropPath: "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
     firstAirDate: '2021-11-06',
     genreIds: [16, 10765, 10759, 18],
     id: 94605,
@@ -73,8 +74,10 @@ final testTvSeries = TvSeries(
     overview:
         'Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.',
     popularity: 134.783,
+    posterPath: "/xQ6GijOFnxTyUzqiwGpVxgfcgqI.jpg",
     voteAverage: 8.7,
-    voteCount: 2593);
+    voteCount: 2593
+    );
 
 final testTvSeriesList = [testTvSeries];
 
