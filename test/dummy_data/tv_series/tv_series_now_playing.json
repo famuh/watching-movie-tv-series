@@ -20,7 +20,7 @@
                 "US"
             ],
             "original_language": "en",
-            "original_name": "Original Title",
+            "original_name": "originalName",
             "overview": "Overview",
             "popularity": 1,
             "poster_path": "/path.jpg",

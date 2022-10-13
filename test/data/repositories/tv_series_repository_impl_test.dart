@@ -29,46 +29,34 @@ void main() {
   });
 
   final tTvSeriesModel = TvSeriesModel(
-    firstAirDate: "2021-11-06", 
-    genreIds: [
-                16,
-                10765,
-                10759,
-                18
-            ], 
-    id: 94605, 
-    title: "Arcane", 
-    originCountry: [
-                "US"
-            ], 
-    originalName: "Arcane", 
-    overview: "Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.", 
-    popularity: 134.783, 
-    voteAverage: 8.7, 
-    voteCount: 2593
-    );
+    backdropPath: "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
+      firstAirDate: "2021-11-06",
+      genreIds: [16, 10765, 10759, 18],
+      id: 94605,
+      title: "Arcane",
+      originCountry: ["US"],
+      originalName: "Arcane",
+      overview:
+          "Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.",
+      popularity: 134.783,
+      posterPath: "/xQ6GijOFnxTyUzqiwGpVxgfcgqI.jpg",
+      voteAverage: 8.7,
+      voteCount: 2593);
 
   final tTvSeries = TvSeries(
-    backdropPath: "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
-    firstAirDate: "2021-11-06", 
-    genreIds: [
-                16,
-                10765,
-                10759,
-                18
-            ], 
-    id: 94605, 
-    title: "Arcane", 
-    originCountry: [
-                "US"
-            ], 
-    originalName: "Arcane", 
-    overview: "Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.", 
-    popularity: 134.783, 
-    posterPath: "/xQ6GijOFnxTyUzqiwGpVxgfcgqI.jpg",
-    voteAverage: 8.7, 
-    voteCount: 2593
-    );
+      backdropPath: "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
+      firstAirDate: "2021-11-06",
+      genreIds: [16, 10765, 10759, 18],
+      id: 94605,
+      title: "Arcane",
+      originCountry: ["US"],
+      originalName: "Arcane",
+      overview:
+          "Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.",
+      popularity: 134.783,
+      posterPath: "/xQ6GijOFnxTyUzqiwGpVxgfcgqI.jpg",
+      voteAverage: 8.7,
+      voteCount: 2593);
 
   final tTvSeriesModelList = <TvSeriesModel>[tTvSeriesModel];
   final tTvSeriesList = <TvSeries>[tTvSeries];
@@ -198,11 +186,43 @@ void main() {
 
   group('Get Tv Series Detail', () {
     final tId = 1;
-    final tTvSeriesResponse = TvSeriesDetailResponse(adult: false, backdropPath: 'backdropPath', episodeRunTime: [120], firstAirDate: 'firstAirDate', genres: [GenreModel(id: 1, name: 'Action')], homepage: "https://google.com", id: 1, inProduction: false, languages: ["en"], lastAirDate: "lastAirDate", name: "Title", numberOfEpisodes: 1, numberOfSeasons: 1, originCountry: ["US"], originalLanguage: "en", originalName: "oeiginalName", overview: "Overview", popularity: 1, posterPath: "posterPath", seasons: [Season(airDate: "airDate", episodeCount: 1, id: 1, name: "name", overview: "overview", seasonNumber: 1)], status: "status", tagline: "tagline", type: "type", voteAverage: 1, voteCount: 1
-    );
+    final tTvSeriesResponse = TvSeriesDetailResponse(
+        adult: false,
+        backdropPath: 'backdropPath',
+        episodeRunTime: [120],
+        firstAirDate: 'firstAirDate',
+        genres: [GenreModel(id: 1, name: 'Action')],
+        homepage: "https://google.com",
+        id: 1,
+        inProduction: false,
+        languages: ["en"],
+        lastAirDate: "lastAirDate",
+        name: "Title",
+        numberOfEpisodes: 1,
+        numberOfSeasons: 1,
+        originCountry: ["US"],
+        originalLanguage: "en",
+        originalName: "originalName",
+        overview: "Overview",
+        popularity: 1,
+        posterPath: "posterPath",
+        seasons: [
+          Season(
+              airDate: "airDate",
+              episodeCount: 1,
+              id: 1,
+              name: "name",
+              overview: "overview",
+              seasonNumber: 1)
+        ],
+        status: "status",
+        tagline: "tagline",
+        type: "type",
+        voteAverage: 1,
+        voteCount: 1);
 
     test(
-        'should return Movie data when the call to remote data source is successful',
+        'should return Tv Series data when the call to remote data source is successful',
         () async {
       // arrange
       when(mockRemoteDataSource.getTvSeriesDetail(tId))
@@ -357,7 +377,8 @@ void main() {
       when(mockLocalDataSource.removeWatchlistForTvSeries(testTvSeriesTable))
           .thenAnswer((_) async => 'Removed from watchlist');
       // act
-      final result = await repository.removeWatchlistTvSeries(testTvSeriesDetail);
+      final result =
+          await repository.removeWatchlistTvSeries(testTvSeriesDetail);
       // assert
       expect(result, Right('Removed from watchlist'));
     });
@@ -367,7 +388,8 @@ void main() {
       when(mockLocalDataSource.removeWatchlistForTvSeries(testTvSeriesTable))
           .thenThrow(DatabaseException('Failed to remove watchlist'));
       // act
-      final result = await repository.removeWatchlistTvSeries(testTvSeriesDetail);
+      final result =
+          await repository.removeWatchlistTvSeries(testTvSeriesDetail);
       // assert
       expect(result, Left(DatabaseFailure('Failed to remove watchlist')));
     });
@@ -377,7 +399,8 @@ void main() {
     test('should return watch status whether data is found', () async {
       // arrange
       final tId = 1;
-      when(mockLocalDataSource.getTvSeriesById(tId)).thenAnswer((_) async => null);
+      when(mockLocalDataSource.getTvSeriesById(tId))
+          .thenAnswer((_) async => null);
       // act
       final result = await repository.isAddedToWatchlist(tId);
       // assert

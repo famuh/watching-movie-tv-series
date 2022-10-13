@@ -87,12 +87,12 @@ final testTvSeriesDetail = TvSeriesDetail(
     genreIds: [Genre(id: 1, name: 'Action')],
     id: 1,
     title: 'Title',
-    originCountry: ["OriginCountry"],
-    originalName: 'OriginalTitle',
+    originCountry: ["US"],
+    originalName: 'originalName',
     overview: 'Overview',
-    popularity: 1,
-    posterPath: 'posterpath',
-    voteAverage: 1,
+    popularity: 1.0,
+    posterPath: 'posterPath',
+    voteAverage: 1.0,
     voteCount: 1
     );
 
@@ -103,8 +103,7 @@ final testWatchlistTvSeries =
       posterPath: 'posterPath', 
       title: 'Title');
 
-final testTvSeriesTable =
-    TvSeriesTable(
+final testTvSeriesTable = TvSeriesTable(
       id: 1, 
       title: 'Title', 
       posterPath: 'posterPath', 
@@ -112,7 +111,7 @@ final testTvSeriesTable =
 
 final testTvSeriesMap = {
   'id': 1,
-  'title': 'title',
-  'posterpath': 'posterpath',
-  'overview': 'overview'
+  'title': 'Title',
+  'posterPath': 'posterPath',
+  'overview': 'Overview'
 };

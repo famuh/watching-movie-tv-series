@@ -63,13 +63,14 @@ void main() {
     });
   });
 
-  group('Get Movie Detail By Id', () {
+  group('Get Tv Series Detail By Id', () {
     final tId = 1;
 
-    test('should return Movie Detail Table when data is found', () async {
+    test('should return Tv Series Detail Table when data is found', () async {
       // arrange
       when(mockDatabaseHelper.getTvSeriesById(tId))
-          .thenAnswer((_) async => testTvSeriesMap);
+          .thenAnswer((_) async => testTvSeriesMap
+          );
       // act
       final result = await dataSource.getTvSeriesById(tId);
       // assert
@@ -86,8 +87,8 @@ void main() {
     });
   });
 
-  group('get watchlist movies', () {
-    test('should return list of MovieTable from database', () async {
+  group('get watchlist tv series', () {
+    test('should return list of TvSeriesTable from database', () async {
       // arrange
       when(mockDatabaseHelper.getWatchlistTvSeries())
           .thenAnswer((_) async => [testTvSeriesMap]);

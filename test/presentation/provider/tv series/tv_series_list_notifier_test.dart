@@ -111,7 +111,7 @@ void main() {
       when(mockGetPopularTvSeries.execute())
           .thenAnswer((_) async => Right(tTvSeriesList));
       // act
-      provider.fetchNowPlayingTvSeries();
+      provider.fetchPopularTvSeries();
       // assert
       expect(provider.popularTvSeriesState, RequestState.Loading);
       // verify(provider.setState(RequestState.Loading));
@@ -123,7 +123,7 @@ void main() {
       when(mockGetPopularTvSeries.execute())
           .thenAnswer((_) async => Right(tTvSeriesList));
       // act
-      await provider.fetchNowPlayingTvSeries();
+      await provider.fetchPopularTvSeries();
       // assert
       expect(provider.popularTvSeriesState, RequestState.Loaded);
       expect(provider.popularTvSeries, tTvSeriesList);
@@ -151,7 +151,7 @@ void main() {
       // act
       provider.fetchTopRatedTvSeries();
       // assert
-      expect(provider.topRatedTvSeries, RequestState.Loading);
+      expect(provider.topRatedTvSeriesState, RequestState.Loading);
     });
 
     test('should change tv series data when data is gotten successfully',

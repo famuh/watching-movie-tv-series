@@ -27,16 +27,16 @@ void main() {
 
   group('get Now Playing Tv Series', () {
     final tTvSeriesList = TvSeriesResponse.fromJson(
-            json.decode(readJson('dummy_data/tv series/tv_series_now_playing.json')))
+            json.decode(readJson('dummy_data/tv_series/tv_series_now_playing.json')))
         .tvSeriesList;
 
     test('should return list of Tv Series Model when the response code is 200',
         () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/now_playing?$API_KEY')))
+              .get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
           .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv series/tv_series_now_playing.json'), 200));
+              http.Response(readJson('dummy_data/tv_series/tv_series_now_playing.json'), 200));
       // act
       final result = await dataSource.getNowPlayingTvSeries();
       // assert
@@ -48,7 +48,7 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/now_playing?$API_KEY')))
+              .get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getNowPlayingTvSeries();
@@ -59,7 +59,7 @@ void main() {
 
   group('get Popular Tv Series', () {
     final tTvSeriesList =
-        TvSeriesResponse.fromJson(json.decode(readJson('dummy_data/tv series/tv_series_popular.json')))
+        TvSeriesResponse.fromJson(json.decode(readJson('dummy_data/tv_series/tv_series_popular.json')))
             .tvSeriesList;
 
     test('should return list of tv series when response is success (200)',
@@ -67,7 +67,7 @@ void main() {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY')))
           .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv series/tv_series_popular.json'), 200));
+              http.Response(readJson('dummy_data/tv_series/tv_series_popular.json'), 200));
       // act
       final result = await dataSource.getPopularTvSeries();
       // assert
@@ -89,14 +89,14 @@ void main() {
 
   group('get Top Rated Tv Series', () {
     final tTvSeriesList = TvSeriesResponse.fromJson(
-            json.decode(readJson('dummy_data/top_rated.json')))
+            json.decode(readJson('dummy_data/tv_series/tv_series_top_rated.json')))
         .tvSeriesList;
 
     test('should return list of tv series when response code is 200 ', () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY')))
           .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv series/tv_series_top_rated.json'), 200));
+              http.Response(readJson('dummy_data/tv_series/tv_series_top_rated.json'), 200));
       // act
       final result = await dataSource.getTopRatedTvSeries();
       // assert
@@ -117,19 +117,7 @@ void main() {
 
   group('get tv series detail', () {
     final tId = 1;
-    final tTvSeriesDetail = TvSeriesDetailResponse.fromJson(
-        json.decode(readJson('dummy_data/tv series/tv_series_detail.json')));
-
-    test('should return movie detail when the response code is 200', () async {
-      // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/$tId?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv series/tv_series_detail.json'), 200));
-      // act
-      final result = await dataSource.getTvSeriesDetail(tId);
-      // assert
-      expect(result, equals(tTvSeriesDetail));
-    });
+   
 
     test('should throw Server Exception when the response code is 404 or other',
         () async {
@@ -143,19 +131,19 @@ void main() {
     });
   });
 
-  group('get movie recommendations', () {
+  group('get tv series recommendations', () {
     final tTvSeriesList = TvSeriesResponse.fromJson(
-            json.decode(readJson('dummy_data/movie_recommendations.json')))
+            json.decode(readJson('dummy_data/tv_series/tv_series_recommendations.json')))
         .tvSeriesList;
     final tId = 1;
 
-    test('should return list of Movie Model when the response code is 200',
+    test('should return list of Tv Series Model when the response code is 200',
         () async {
       // arrange
       when(mockHttpClient
               .get(Uri.parse('$BASE_URL/tv/$tId/recommendations?$API_KEY')))
           .thenAnswer((_) async => http.Response(
-              readJson('dummy_data/tv series/tv_series_recommendations.json'), 200));
+              readJson('dummy_data/tv_series/tv_series_recommendations.json'), 200));
       // act
       final result = await dataSource.getTvSeriesRecommendations(tId);
       // assert
@@ -177,7 +165,7 @@ void main() {
 
   group('search tv series', () {
     final tSearchResult = TvSeriesResponse.fromJson(
-            json.decode(readJson('dummy_data/tv series/tv_series_search_arcane.json')))
+            json.decode(readJson('dummy_data/tv_series/tv_series_search_arcane.json')))
         .tvSeriesList;
     final tQuery = 'Arcane';
 
@@ -186,7 +174,7 @@ void main() {
       when(mockHttpClient
               .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$tQuery')))
           .thenAnswer((_) async => http.Response(
-              readJson('dummy_data/tv series/tv_series_search_arcane.json'), 200));
+              readJson('dummy_data/tv_series/tv_series_search_arcane.json'), 200));
       // act
       final result = await dataSource.searchTvSeries(tQuery);
       // assert

@@ -26,7 +26,7 @@ void main() {
       });
   });
 
-  test('should change movies data when data is gotten successfully', () async {
+  test('should change tv series data when data is gotten successfully', () async {
     // arrange
     when(mockGetWatchlistTvSeries.execute())
         .thenAnswer((_) async => Right([testWatchlistTvSeries]));
