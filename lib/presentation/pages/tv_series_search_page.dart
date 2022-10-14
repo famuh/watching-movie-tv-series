@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../provider/tv series/tv_series_search_notifier.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPageTvSeries extends StatelessWidget {
   static const ROUTE_NAME = '/tv-series-search';
 
   @override

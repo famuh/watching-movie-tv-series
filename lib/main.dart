@@ -9,6 +9,7 @@ import 'package:ditonton/presentation/pages/movie_search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
 import 'package:ditonton/presentation/pages/tv_series_now_playing.dart';
 import 'package:ditonton/presentation/pages/tv_series_page.dart';
+import 'package:ditonton/presentation/pages/tv_series_search_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
 
 import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
@@ -29,6 +30,7 @@ import 'presentation/provider/tv series/popular_tv_series_notifier.dart';
 import 'presentation/provider/tv series/top_rated_tv_series_notifier.dart';
 import 'presentation/provider/tv series/tv_series_detail_notifier.dart';
 import 'presentation/provider/tv series/tv_series_list_notifier.dart';
+import 'presentation/provider/tv series/tv_series_search_notifier.dart';
 import 'presentation/provider/tv series/watchlist_tv_series_notifier.dart';
 
 
@@ -71,6 +73,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesDetailNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TvSeriesSearchNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TopRatedTvSeriesNotifier>(),
@@ -121,6 +126,8 @@ class MyApp extends StatelessWidget {
                 builder: (_) => TvSeriesDetailPage(id: id),
                 settings: settings,
               );
+              case SearchPageTvSeries.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => SearchPageTvSeries());
             case PopularTvSeriesPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => PopularTvSeriesPage());
             case TopRatedTvSeriesPage.ROUTE_NAME:
