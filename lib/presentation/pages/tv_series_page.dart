@@ -4,6 +4,7 @@ import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/popular_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/movie_search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_tv_series_page.dart';
+import 'package:ditonton/presentation/pages/tv_series_now_playing.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -96,9 +97,10 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // NOW PLAYING
-                Text(
-                  'Now Playing',
-                  style: kHeading6,
+                 _buildSubHeading(
+                  title: 'Now Playing',
+                  onTap: () => Navigator.pushNamed(
+                      context, NowPlayingTvSeriesPage.ROUTE_NAME),
                 ),
                 Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                   final state = data.nowPlayingState;
