@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ditonton/common/exception.dart';
+import 'package:ditonton/domain/entities/tvSeries.dart';
 import 'package:http/http.dart' as http;
 
 import '../../models/tv series/tv_series_detail_model.dart';

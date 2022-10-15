@@ -37,11 +37,11 @@ class TvSeriesTable extends Equatable {
         'overview': overview,
       };
 
-  TvSeries toEntity() => TvSeries.watchList(
+  TvSeries toEntity() => TvSeries.watchlist(
         id: id,
         overview: overview!,
         posterPath: posterPath,
-        title: title,
+        name: title,
       );
 
   @override
