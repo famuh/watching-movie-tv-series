@@ -47,16 +47,17 @@ void main() {
         "results": [
           {
             "backdrop_path": "/path.jpg",
-            "first_air_date": "2020-05-05-2020-05-05-2020-05-05",
+            "first_air_date": "2020-05-05",
             "genre_ids": [1,2,3,4],
             "id": 1,
-            "title": "Title",
+            "name": "Title",
             "origin_country": ["US"],
+            "original_language": "en",
             "original_name": "originalName",
             "overview": "Overview",
-            "popularity": 1,
+            "popularity": 1.0,
             "poster_path": "/path.jpg",
-            "vote_average": 1,
+            "vote_average": 1.0,
             "vote_count": 1
           }
         ],

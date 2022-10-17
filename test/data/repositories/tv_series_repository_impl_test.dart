@@ -33,7 +33,8 @@ void main() {
       firstAirDate: "2021-11-06",
       genreIds: [16, 10765, 10759, 18],
       id: 94605,
-      title: "Arcane",
+      name: "Arcane",
+      originalLanguage: "en",
       originCountry: ["US"],
       originalName: "Arcane",
       overview:
@@ -48,7 +49,8 @@ void main() {
       firstAirDate: "2021-11-06",
       genreIds: [16, 10765, 10759, 18],
       id: 94605,
-      title: "Arcane",
+      originalLanguage: "en",
+      name: "Arcane",
       originCountry: ["US"],
       originalName: "Arcane",
       overview:
@@ -204,22 +206,14 @@ void main() {
         originalLanguage: "en",
         originalName: "originalName",
         overview: "Overview",
-        popularity: 1,
-        posterPath: "posterPath",
-        seasons: [
-          Season(
-              airDate: "airDate",
-              episodeCount: 1,
-              id: 1,
-              name: "name",
-              overview: "overview",
-              seasonNumber: 1)
-        ],
         status: "status",
         tagline: "tagline",
         type: "type",
-        voteAverage: 1,
-        voteCount: 1);
+        popularity: 1.0,
+        posterPath: "posterPath",
+        voteAverage: 1.0,
+        voteCount: 1
+        );
 
     test(
         'should return Tv Series data when the call to remote data source is successful',

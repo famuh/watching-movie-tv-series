@@ -64,50 +64,54 @@ final testMovieMap = {
 
 // TV SERIES
 final testTvSeries = TvSeries(
-  backdropPath: "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
+    backdropPath: "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
     firstAirDate: '2021-11-06',
     genreIds: [16, 10765, 10759, 18],
     id: 94605,
-    title: 'Arcane',
+    name: 'Arcane',
     originCountry: ["US"],
+    originalLanguage: "en",
     originalName: 'Arcane',
     overview:
         'Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.',
     popularity: 134.783,
     posterPath: "/xQ6GijOFnxTyUzqiwGpVxgfcgqI.jpg",
     voteAverage: 8.7,
-    voteCount: 2593
-    );
+    voteCount: 2593);
 
 final testTvSeriesList = [testTvSeries];
 
 final testTvSeriesDetail = TvSeriesDetail(
+    adult: false,
     backdropPath: 'backdropPath',
-    firstAirDate: 'firstAirDate',
-    genreIds: [Genre(id: 1, name: 'Action')],
+    episodeRunTime: [120],
+    firstAirDate: "firstAirDate",
+    genres: [Genre(id: 1, name: 'Action')],
+    homepage: "https://google.com",
     id: 1,
-    title: 'Title',
+    inProduction: false,
+    languages: ["en"],
+    lastAirDate: "lastAirDate",
+    name: 'Title',
+    numberOfEpisodes: 1,
+    numberOfSeasons: 1,
     originCountry: ["US"],
+    originalLanguage: "en",
     originalName: 'originalName',
     overview: 'Overview',
     popularity: 1.0,
     posterPath: 'posterPath',
+    status: "status",
+    tagline: "tagline",
+    type: "type",
     voteAverage: 1.0,
-    voteCount: 1
-    );
+    voteCount: 1);
 
-final testWatchlistTvSeries =
-    TvSeries.watchList(
-      id: 1, 
-      overview: 'Overview', 
-      posterPath: 'posterPath', 
-      title: 'Title');
+final testWatchlistTvSeries = TvSeries.watchlist(
+    id: 1, overview: 'Overview', posterPath: 'posterPath', name: 'Title');
 
 final testTvSeriesTable = TvSeriesTable(
-      id: 1, 
-      title: 'Title', 
-      posterPath: 'posterPath', 
-      overview: 'Overview');
+    id: 1, title: 'Title', posterPath: 'posterPath', overview: 'Overview');
 
 final testTvSeriesMap = {
   'id': 1,

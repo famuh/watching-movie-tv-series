@@ -32,7 +32,8 @@ void main() {
     firstAirDate: '2021-11-06',
     genreIds: [16, 10765, 10759, 18],
     id: 94605,
-    title: 'Arcane',
+    originalLanguage: "en",
+    name: 'Arcane',
     originCountry: ["US"],
     originalName: 'Arcane',
     overview:
