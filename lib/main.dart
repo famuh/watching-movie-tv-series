@@ -1,7 +1,6 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/bloc/movie/bloc/movie_bloc.dart';
-import 'package:ditonton/presentation/bloc/movie/search_bloc.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
@@ -15,7 +14,6 @@ import 'package:ditonton/presentation/pages/tv_series_search_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
 
 import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,9 +22,7 @@ import 'package:ditonton/injection.dart' as di;
 
 import 'presentation/pages/top_rated_tv_series_page.dart';
 import 'presentation/pages/tv_series_detail_page.dart';
-import 'presentation/provider/movie/movie_detail_notifier.dart';
 import 'presentation/provider/movie/movie_list_notifier.dart';
-import 'presentation/provider/movie/movie_search_notifier.dart';
 import 'presentation/provider/movie/popular_movies_notifier.dart';
 import 'presentation/provider/tv series/now_playing_tv_series_notifier.dart';
 import 'presentation/provider/tv series/popular_tv_series_notifier.dart';

@@ -53,3 +53,21 @@ class WatchlistMovieStatus extends MovieEventBloc {
   @override
   List<Object> get props => [id];
 }
+
+// SEARCH MOVIE
+class SearchEvent extends Equatable {
+  const SearchEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class OnQueryChanged extends SearchEvent{
+  final String query;
+
+  OnQueryChanged(this.query);
+
+  @override
+  List<Object> get props => [query];
+}
+

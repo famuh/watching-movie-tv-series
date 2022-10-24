@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/domain/usecases/movie/get_movie_recommendations.dart';
 import 'package:equatable/equatable.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../../../domain/entities/movie.dart';
 import '../../../../domain/usecases/get_watchlist_status.dart';
@@ -9,6 +10,7 @@ import '../../../../domain/usecases/movie/get_movie_detail.dart';
 import '../../../../domain/usecases/movie/get_watchlist_movies.dart';
 import '../../../../domain/usecases/movie/remove_watchlist.dart';
 import '../../../../domain/usecases/movie/save_watchlist.dart';
+import '../../../../domain/usecases/movie/search_movies.dart';
 
 part 'movie_event.dart';
 part 'movie_state.dart';
@@ -117,3 +119,30 @@ class WatchlistBloc extends Bloc<MovieEventBloc, MovieStateBloc> {
   }
 }
 
+// SEARCH MOVIE
+class SearchBloc extends Bloc<SearchEvent, SearchState> {
+  final SearchMovies _searchMovies;
+
+  SearchBloc(this._searchMovies) : super(SearchEmpty()) {
+    on<OnQueryChanged>((event, emit) async {
+      final query = event.query;
+
+      emit(SearchLoading());
+
+      final result = await _searchMovies.execute(query);
+
+      result.fold(
+        (failure) {
+          emit(SearchError(failure.message));
+        },
+        (data) {
+          emit(SearchHasData(data));
+        },
+      );
+    }, transformer: debounce(const Duration(milliseconds: 500)));
+  }
+}
+
+EventTransformer<T> debounce<T>(Duration duration) {
+  return (events, mapper) => events.debounceTime(duration).flatMap(mapper);
+}

@@ -14,12 +14,10 @@ import 'package:ditonton/domain/usecases/tv%20series/remove_watchlist_tv_series.
 import 'package:ditonton/domain/usecases/tv%20series/save_watchlist_tv_series.dart';
 import 'package:ditonton/domain/usecases/tv%20series/search_tv_series.dart';
 import 'package:ditonton/presentation/bloc/movie/bloc/movie_bloc.dart';
-import 'package:ditonton/presentation/bloc/movie/search_bloc.dart';
 import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/tv%20series/now_playing_tv_series_notifier.dart';
 import 'package:ditonton/presentation/provider/tv%20series/tv_series_search_notifier.dart';
 import 'package:ditonton/presentation/provider/tv%20series/watchlist_tv_series_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
