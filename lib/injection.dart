@@ -35,9 +35,7 @@ import 'domain/usecases/tv series/get_popular_tv_series.dart';
 import 'domain/usecases/tv series/get_top_rated_tv_series.dart';
 import 'domain/usecases/tv series/get_tv_series_detail.dart';
 import 'domain/usecases/tv series/get_tv_series_reccomendations.dart';
-import 'presentation/provider/movie/movie_detail_notifier.dart';
 import 'presentation/provider/movie/movie_list_notifier.dart';
-import 'presentation/provider/movie/movie_search_notifier.dart';
 import 'presentation/provider/movie/popular_movies_notifier.dart';
 import 'presentation/provider/tv series/popular_tv_series_notifier.dart';
 import 'presentation/provider/tv series/top_rated_tv_series_notifier.dart';
@@ -60,15 +58,19 @@ void init() {
     locator(),
     locator(),
   ));
+  locator.registerFactory(() => NowPlayingMovieBloc(locator()));
+  locator.registerFactory(() => PopularMovieBloc(locator()));
+  locator.registerFactory(() => TopRatedMovieBloc(locator()));
+
 
   // provider
-  locator.registerFactory(
-    () => MovieListNotifier(
-      getNowPlayingMovies: locator(),
-      getPopularMovies: locator(),
-      getTopRatedMovies: locator(),
-    ),
-  );
+  // locator.registerFactory(
+  //   () => MovieListNotifier(
+  //     getNowPlayingMovies: locator(),
+  //     getPopularMovies: locator(),
+  //     getTopRatedMovies: locator(),
+  //   ),
+  // );
   // locator.registerFactory(
   //   () => MovieDetailNotifier(
   //     getMovieDetail: locator(),
@@ -83,16 +85,16 @@ void init() {
   //     searchMovies: locator(),
   //   ),
   // );
-  locator.registerFactory(
-    () => PopularMoviesNotifier(
-      locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => TopRatedMoviesNotifier(
-      getTopRatedMovies: locator(),
-    ),
-  );
+  // locator.registerFactory(
+  //   () => PopularMoviesNotifier(
+  //     locator(),
+  //   ),
+  // );
+  // locator.registerFactory(
+  //   () => TopRatedMoviesNotifier(
+  //     getTopRatedMovies: locator(),
+  //   ),
+  // );
   // locator.registerFactory(
   //   () => WatchlistMovieNotifier(
   //     getWatchlistMovies: locator(),

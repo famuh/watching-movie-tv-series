@@ -42,9 +42,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (_) => di.locator<MovieListNotifier>(),
+        // ),
         // ChangeNotifierProvider(
         //   create: (_) => di.locator<MovieDetailNotifier>(),
         // ),
@@ -53,20 +53,24 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<SearchBloc>()),
         BlocProvider(create: (_) => di.locator<MovieDetailBloc>()),
         BlocProvider(create: (_) => di.locator<MovieRecommendationBloc>()),
+        BlocProvider(create: (_) => di.locator<WatchlistBloc>()),
+
+        BlocProvider(create: (_) => di.locator<NowPlayingMovieBloc>()),
+        BlocProvider(create: (_) => di.locator<PopularMovieBloc>()),
+        BlocProvider(create: (_) => di.locator<TopRatedMovieBloc>()),
 
         // ChangeNotifierProvider(
         //   create: (_) => di.locator<MovieSearchNotifier>(),
         // ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedMoviesNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularMoviesNotifier>(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (_) => di.locator<TopRatedMoviesNotifier>(),
+        // ),
+        // ChangeNotifierProvider(
+        //   create: (_) => di.locator<PopularMoviesNotifier>(),
+        // ),
         // ChangeNotifierProvider(
         //   create: (_) => di.locator<WatchlistMovieNotifier>(),
         // ),
-        BlocProvider(create: (_) => di.locator<WatchlistBloc>()),
 
         // TV SERIES
         ChangeNotifierProvider(
