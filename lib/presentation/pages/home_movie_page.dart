@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/presentation/bloc/movie/bloc/movie_bloc.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/movie_search_page.dart';
@@ -11,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common/constants.dart';
 import '../../domain/entities/movie.dart';
+import '../bloc/movie/movie_bloc.dart';
 import 'movie_detail_page.dart';
 
 class MoviePage extends StatefulWidget {
