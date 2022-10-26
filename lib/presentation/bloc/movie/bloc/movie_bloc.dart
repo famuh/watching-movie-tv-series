@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/domain/usecases/movie/get_movie_recommendations.dart';
+import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart';
+import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
+import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -23,6 +26,67 @@ part 'movie_state.dart';
 //   }
 // }
 
+// NOW PLAYING MOVIE
+class NowPlayingMovieBloc extends Bloc<MovieEventBloc, MovieStateBloc>{
+  final GetNowPlayingMovies _getNowPlayingMovie;
+
+  NowPlayingMovieBloc(this._getNowPlayingMovie) : super(MoviesLoading()){
+    on<FetchNowPlayingMovies>((event, emit) async {
+      
+      emit(MoviesLoading());
+      final result = await _getNowPlayingMovie.execute();
+      result.fold(
+        (failure){
+        emit(MoviesError(failure.message));
+        }, 
+        (data) {
+          emit(MoviesHasData(data));
+        });
+    });
+  }
+}
+
+// POPULAR MOVIE
+class PopularMovieBloc extends Bloc<MovieEventBloc, MovieStateBloc>{
+  final GetPopularMovies _getPopularMovies;
+
+  PopularMovieBloc(this._getPopularMovies) : super(MoviesLoading()){
+    on<FetchPopularMovies>((event, emit) async {
+      
+      emit(MoviesLoading());
+      final result = await _getPopularMovies.execute();
+      result.fold(
+        (failure){
+        emit(MoviesError(failure.message));
+        }, 
+        (data) {
+          emit(MoviesHasData(data));
+        });
+    });
+  }
+}
+
+// TOP RATED
+class TopRatedMovieBloc extends Bloc<MovieEventBloc, MovieStateBloc>{
+  final GetTopRatedMovies _getTopRatedMovies;
+
+  TopRatedMovieBloc(this._getTopRatedMovies) : super(MoviesLoading()){
+    on<FetchTopRatedMovies>((event, emit) async {
+      
+      emit(MoviesLoading());
+      final result = await _getTopRatedMovies.execute();
+      result.fold(
+        (failure){
+        emit(MoviesError(failure.message));
+        }, 
+        (data) {
+          emit(MoviesHasData(data));
+        });
+    });
+  }
+}
+
+// MOVIE DETAIL
 class MovieDetailBloc extends Bloc<MovieEventBloc, MovieStateBloc> {
   final GetMovieDetail _getMovieDetail;
 

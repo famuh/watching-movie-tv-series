@@ -8,8 +8,8 @@ abstract class MovieEventBloc extends Equatable {
 }
 
 class FetchNowPlayingMovies extends MovieEventBloc{}
-class FetchPopularPlayingMovies extends MovieEventBloc{}
-class FetchTopRatedPlayingMovies extends MovieEventBloc{}
+class FetchPopularMovies extends MovieEventBloc{}
+class FetchTopRatedMovies extends MovieEventBloc{}
 class FetchWatchlistMovies extends MovieEventBloc {}
 
 
