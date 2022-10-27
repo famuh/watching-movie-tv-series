@@ -9,7 +9,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../bloc/movie/movie_bloc.dart';
 
-
 class MovieDetailPage extends StatefulWidget {
   static const ROUTE_NAME = '/detail';
 
@@ -25,10 +24,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      // Provider.of<MovieDetailNotifier>(context, listen: false)
-      //     .fetchMovieDetail(widget.id);
-      // Provider.of<MovieDetailNotifier>(context, listen: false)
-      //     .loadWatchlistStatus(widget.id);
       context.read<MovieDetailBloc>().add(FetchDetailMovie(widget.id));
       context
           .read<MovieRecommendationBloc>()
@@ -134,18 +129,10 @@ class DetailContent extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () async {
                                 if (!isAddedWatchlist) {
-                                  // await Provider.of<MovieDetailNotifier>(
-                                  //         context,
-                                  //         listen: false)
-                                  //     .addWatchlist(movie);
                                   context
                                       .read<WatchlistBloc>()
                                       .add(SaveWatchistMovie(movie));
                                 } else {
-                                  // await Provider.of<MovieDetailNotifier>(
-                                  //         context,
-                                  //         listen: false)
-                                  //     .removeFromWatchlist(movie);
                                   context
                                       .read<WatchlistBloc>()
                                       .add(RemoveWatchlistMovie(movie));
@@ -155,10 +142,6 @@ class DetailContent extends StatelessWidget {
                                 final watchlistState =
                                     BlocProvider.of<WatchlistBloc>(context)
                                         .state;
-                                // Provider.of<MovieDetailNotifier>(context,
-                                //         listen: false)
-                                //     .watchlistMessage;
-
                                 if (watchlistState is WatchlistMovieState) {
                                   message = isAddedWatchlist
                                       ? WatchlistBloc.watchlistAddSuccessMessage
@@ -169,13 +152,6 @@ class DetailContent extends StatelessWidget {
                                       ? WatchlistBloc.watchlistAddSuccessMessage
                                       : WatchlistBloc
                                           .watchlistRemoveSuccessMessage;
-                                  // showDialog(
-                                  //     context: context,
-                                  //     builder: (context) {
-                                  //       return AlertDialog(
-                                  //         content: Text(message),
-                                  //       );
-                                  //     });
                                 }
 
                                 if (message ==
@@ -184,10 +160,13 @@ class DetailContent extends StatelessWidget {
                                     message ==
                                         WatchlistBloc
                                             .watchlistRemoveSuccessMessage) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text(message), duration: Duration(milliseconds: 500),));
-                                    BlocProvider.of<WatchlistBloc>(context).add(WatchlistMovieStatus(movie.id));
-                                  
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text(message),
+                                    duration: Duration(milliseconds: 500),
+                                  ));
+                                  BlocProvider.of<WatchlistBloc>(context)
+                                      .add(WatchlistMovieStatus(movie.id));
                                 }
                               },
                               child: Row(
@@ -233,53 +212,47 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                               
-                               
-                              
+
                             // ),
-                          
-                            
-                                  Container(
-                                    height: 150,
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index) {
-                                        final movie = recommendations[index];
-                                        return Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: InkWell(
-                                            onTap: () {
-                                              Navigator.pushReplacementNamed(
-                                                context,
-                                                MovieDetailPage.ROUTE_NAME,
-                                                arguments: movie.id,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(8),
-                                              ),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                                                placeholder: (context, url) =>
-                                                    Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        Icon(Icons.error),
-                                              ),
-                                            ),
+
+                            Container(
+                                height: 150,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    final movie = recommendations[index];
+                                    return Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushReplacementNamed(
+                                            context,
+                                            MovieDetailPage.ROUTE_NAME,
+                                            arguments: movie.id,
+                                          );
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(8),
                                           ),
-                                        );
-                                      },
-                                      itemCount: recommendations.length,
-                                    )
-                          
-                              
-                            )
+                                          child: CachedNetworkImage(
+                                            imageUrl:
+                                                'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                            placeholder: (context, url) =>
+                                                Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            ),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    Icon(Icons.error),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  itemCount: recommendations.length,
+                                ))
                           ],
                         ),
                       ),

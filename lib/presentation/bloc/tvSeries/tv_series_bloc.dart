@@ -18,15 +18,6 @@ import '../../../domain/usecases/tv series/save_watchlist_tv_series.dart';
 part 'tv_series_event.dart';
 part 'tv_series_state.dart';
 
-// class TvSeriesBloc extends Bloc<TvSeriesEvent, TvSeriesState> {
-//   TvSeriesBloc() : super(TvSeriesInitial()) {
-//     on<TvSeriesEvent>((event, emit) {
-//       // TODO: implement event handler
-//     });
-//   }
-// }
-
-
 // NOW PLAYING TV SERIES
 class NowPlayingTvSeriesBloc extends Bloc<TvSeriesEventBloc, TvSeriesStateBloc>{
   final GetNowPlayingTvSeries _getNowPlayingTvSeries;

@@ -3,14 +3,10 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/tvSeries.dart';
 import 'package:ditonton/domain/entities/tv_series_detail.dart';
-import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/presentation/bloc/tvSeries/tv_series_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:provider/provider.dart';
-
-import '../provider/tv series/tv_series_detail_notifier.dart';
 
 class TvSeriesDetailPage extends StatefulWidget {
   static const ROUTE_NAME = '/tv-series-detail';
@@ -27,16 +23,6 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      //   Provider.of<TvSeriesDetailNotifier>(context, listen: false)
-      //       .fetchTvSeriesDetail(widget.id);
-      //   Provider.of<TvSeriesDetailNotifier>(context, listen: false)
-      //       .loadWatchlistStatus(widget.id);
-      // });
-
-      // Provider.of<MovieDetailNotifier>(context, listen: false)
-      //     .fetchMovieDetail(widget.id);
-      // Provider.of<MovieDetailNotifier>(context, listen: false)
-      //     .loadWatchlistStatus(widget.id);
       context.read<TvSeriesDetailBloc>().add(FetchDetailTvSeries(widget.id));
       context
           .read<TvSeriesRecommendationBloc>()
@@ -88,28 +74,7 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
           );
         }
       },
-    )
-        // Consumer<TvSeriesDetailNotifier>(
-        //   builder: (context, provider, child) {
-        //     if (provider.tvSeriesState == RequestState.Loading) {
-        //       return Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     } else if (provider.tvSeriesState == RequestState.Loaded) {
-        //       final tvSeries = provider.tvSeries;
-        //       return SafeArea(
-        //         child: DetailContent(
-        //           tvSeries,
-        //           provider.tvSeriesRecommendations,
-        //           provider.isAddedToWatchlist,
-        //         ),
-        //       );
-        //     } else {
-        //       return Text(provider.message);
-        //     }
-        //   },
-        // ),
-        );
+    ));
   }
 }
 
@@ -163,26 +128,14 @@ class DetailContent extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () async {
                                 if (!isAddedWatchlist) {
-                                  // await Provider.of<TvSeriesDetailNotifier>(
-                                  //         context,
-                                  //         listen: false)
-                                  //     .addWatchlist(tvSeries);
                                   context
                                       .read<WatchlistTvSeriesBloc>()
                                       .add(SaveWatchistTvSeriesEvent(tvSeries));
                                 } else {
-                                  // await Provider.of<TvSeriesDetailNotifier>(
-                                  //         context,
-                                  //         listen: false)
-                                  // .removeFromWatchlistTvSeries(tvSeries);
                                   context.read<WatchlistTvSeriesBloc>().add(
                                       RemoveWatchlistTvSeriesEvent(tvSeries));
                                 }
 
-                                // final message =
-                                //     Provider.of<TvSeriesDetailNotifier>(context,
-                                //             listen: false)
-                                //         .watchlistMessage;
                                 String message = '';
                                 final watchlistState =
                                     BlocProvider.of<WatchlistTvSeriesBloc>(

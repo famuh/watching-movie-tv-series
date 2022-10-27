@@ -1,11 +1,8 @@
-import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 import '../bloc/movie/movie_bloc.dart';
-import '../provider/movie/popular_movies_notifier.dart';
 
 class PopularMoviesPage extends StatefulWidget {
   static const ROUTE_NAME = '/popular-movie';
@@ -21,8 +18,8 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
     Future.microtask(() =>
         // Provider.of<PopularMoviesNotifier>(context, listen: false)
         //     .fetchPopularMovies());
-    context.read<PopularMovieBloc>().add(FetchPopularMovies())
-  );}
+        context.read<PopularMovieBloc>().add(FetchPopularMovies()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +29,7 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
       ),
       body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: 
-          BlocBuilder<PopularMovieBloc, MovieStateBloc>(
+          child: BlocBuilder<PopularMovieBloc, MovieStateBloc>(
             builder: (context, state) {
               if (state is MoviesLoading) {
                 return Center(child: CircularProgressIndicator());

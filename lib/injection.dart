@@ -13,9 +13,6 @@ import 'package:ditonton/domain/usecases/movie/remove_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv%20series/remove_watchlist_tv_series.dart';
 import 'package:ditonton/domain/usecases/tv%20series/save_watchlist_tv_series.dart';
 import 'package:ditonton/domain/usecases/tv%20series/search_tv_series.dart';
-import 'package:ditonton/presentation/provider/tv%20series/now_playing_tv_series_notifier.dart';
-import 'package:ditonton/presentation/provider/tv%20series/tv_series_search_notifier.dart';
-import 'package:ditonton/presentation/provider/tv%20series/watchlist_tv_series_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -35,10 +32,6 @@ import 'domain/usecases/tv series/get_tv_series_detail.dart';
 import 'domain/usecases/tv series/get_tv_series_reccomendations.dart';
 import 'presentation/bloc/movie/movie_bloc.dart';
 import 'presentation/bloc/tvSeries/tv_series_bloc.dart';
-import 'presentation/provider/tv series/popular_tv_series_notifier.dart';
-import 'presentation/provider/tv series/top_rated_tv_series_notifier.dart';
-import 'presentation/provider/tv series/tv_series_detail_notifier.dart';
-import 'presentation/provider/tv series/tv_series_list_notifier.dart';
 
 final locator = GetIt.instance;
 

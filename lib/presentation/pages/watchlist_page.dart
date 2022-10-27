@@ -1,13 +1,10 @@
-import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 import '../bloc/movie/movie_bloc.dart';
 import '../bloc/tvSeries/tv_series_bloc.dart';
-import '../provider/tv series/watchlist_tv_series_notifier.dart';
 
 class WatchlistPage extends StatefulWidget {
   static const ROUTE_NAME = '/watchlist-tvSeries';
@@ -21,13 +18,8 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   void initState() {
     super.initState();
     Future.microtask(() {
-      // Provider.of<WatchlistMovieNotifier>(context, listen: false)
-      //     .fetchWatchlistMovies());
       context.read<WatchlistBloc>().add(FetchWatchlistMovies());
       context.read<WatchlistTvSeriesBloc>().add(FetchWatchlistTvSeries());
-
-      // Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-      //     .fetchWatchlistTvSeries();
     });
   }
 
@@ -40,9 +32,6 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   void didPopNext() {
     context.read<WatchlistBloc>().add(FetchWatchlistMovies());
     context.read<WatchlistTvSeriesBloc>().add(FetchWatchlistTvSeries());
-
-    // Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-    //     .fetchWatchlistTvSeries();
   }
 
   @override
@@ -111,37 +100,7 @@ class _MovieWatchlistState extends State<MovieWatchlist> {
           } else {
             return Text('can\'t load data');
           }
-        })
-        // Consumer<WatchlistMovieNotifier>(
-        //   builder: (context, data, child) {
-        //     if (data.watchlistState == RequestState.Loading) {
-        //       return Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     } else if (data.watchlistState == RequestState.Loaded) {
-        //       if (data.watchlistMovies.length < 1) {
-        //         return Center(
-        //           child: Text('No movies added yet'),
-        //         );
-        //       } else {
-        //         return ListView.builder(
-        //           itemBuilder: (context, index) {
-        //             final tvSeries = data.watchlistMovies[index];
-        //             return MovieCard(tvSeries);
-        //           },
-        //           itemCount: data.watchlistMovies.length,
-        //         );
-        //       }
-        //     } else {
-        //       return Center(
-        //         key: Key('error_message'),
-        //         child: Text(data.message),
-        //       );
-        //     }
-        //   },
-        // ),
-
-        );
+        }));
   }
 }
 
@@ -185,35 +144,6 @@ class _TvSeriesWatchlistState extends State<TvSeriesWatchlist> {
               return Text('can\'t load data');
             }
           },
-        )
-        // Consumer<WatchlistTvSeriesNotifier>(
-        //   builder: (context, data, child) {
-        //     if (data.watchlistState == RequestState.Loading) {
-        //       return Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     } else if (data.watchlistState == RequestState.Loaded) {
-        //       if (data.watchlistTvSeries.length < 1) {
-        //         return Center(
-        //           child: Text('No tv series added yet'),
-        //         );
-        //       } else {
-        //         return ListView.builder(
-        //           itemBuilder: (context, index) {
-        //             final tvSeries = data.watchlistTvSeries[index];
-        //             return TvSeriesCard(tvSeries);
-        //           },
-        //           itemCount: data.watchlistTvSeries.length,
-        //         );
-        //       }
-        //     } else {
-        //       return Center(
-        //         key: Key('error_message'),
-        //         child: Text(data.message),
-        //       );
-        //     }
-        //   },
-        // ),
-        );
+        ));
   }
 }

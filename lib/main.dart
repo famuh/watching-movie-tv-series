@@ -22,13 +22,6 @@ import 'presentation/bloc/movie/movie_bloc.dart';
 import 'presentation/bloc/tvSeries/tv_series_bloc.dart';
 import 'presentation/pages/top_rated_tv_series_page.dart';
 import 'presentation/pages/tv_series_detail_page.dart';
-import 'presentation/provider/tv series/now_playing_tv_series_notifier.dart';
-import 'presentation/provider/tv series/popular_tv_series_notifier.dart';
-import 'presentation/provider/tv series/top_rated_tv_series_notifier.dart';
-import 'presentation/provider/tv series/tv_series_detail_notifier.dart';
-import 'presentation/provider/tv series/tv_series_list_notifier.dart';
-import 'presentation/provider/tv series/tv_series_search_notifier.dart';
-import 'presentation/provider/tv series/watchlist_tv_series_notifier.dart';
 
 void main() {
   di.init();

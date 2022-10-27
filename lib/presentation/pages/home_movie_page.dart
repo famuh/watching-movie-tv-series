@@ -113,20 +113,7 @@ class _MoviePageState extends State<MoviePage> {
                     return Center(child: Text('No Movies :('),);
                   }
                 },
-              )
-              // Consumer<MovieListNotifier>(builder: (context, data, child) {
-              //   final state = data.nowPlayingState;
-              //   if (state == RequestState.Loading) {
-              //     return Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return MovieList(data.nowPlayingMovies);
-              //   } else {
-              //     return Text('Failed');
-              //   }
-              // }
-            ,
+              ),
               _buildSubHeading(
                 title: 'Popular',
                 onTap: () =>
@@ -145,19 +132,6 @@ class _MoviePageState extends State<MoviePage> {
                   }
                 },
               ),
-              // Consumer<MovieListNotifier>(builder: (context, data, child) {
-              //   final state = data.popularMoviesState;
-              //   if (state == RequestState.Loading) {
-              //     return Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return MovieList(data.popularMovies);
-              //   } else {
-              //     return Text('Failed');
-              //   }
-              // }),
-              
               _buildSubHeading(
                 title: 'Top Rated',
                 onTap: () =>
@@ -176,18 +150,6 @@ class _MoviePageState extends State<MoviePage> {
                   }
                 },
               )
-              // Consumer<MovieListNotifier>(builder: (context, data, child) {
-              //   final state = data.topRatedMoviesState;
-              //   if (state == RequestState.Loading) {
-              //     return Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return MovieList(data.topRatedMovies);
-              //   } else {
-              //     return Text('Failed');
-              //   }
-              // }),
             ],
           ),
         )

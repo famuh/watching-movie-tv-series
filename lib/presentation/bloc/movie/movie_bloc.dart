@@ -18,14 +18,6 @@ import '../../../../domain/usecases/movie/search_movies.dart';
 part 'movie_event.dart';
 part 'movie_state.dart';
 
-// class MovieBloc extends Bloc<MovieEvent, MovieState> {
-//   MovieBloc() : super(MovieInitial()) {
-//     on<MovieEvent>((event, emit) {
-//       // TODO: implement event handler
-//     });
-//   }
-// }
-
 // NOW PLAYING MOVIE
 class NowPlayingMovieBloc extends Bloc<MovieEventBloc, MovieStateBloc>{
   final GetNowPlayingMovies _getNowPlayingMovie;
