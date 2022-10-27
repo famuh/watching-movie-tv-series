@@ -76,7 +76,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               child: Text(state.message),
             );
           } else {
-            return Text('can\'t load data');
+            return Text('No Movies :(');
           }
         },
       ),
