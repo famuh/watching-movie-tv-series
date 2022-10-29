@@ -18,6 +18,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
+import 'common/ssl_helper.dart';
 import 'presentation/bloc/movie/movie_bloc.dart';
 import 'presentation/bloc/tvSeries/tv_series_bloc.dart';
 import 'presentation/pages/top_rated_tv_series_page.dart';
@@ -25,7 +26,10 @@ import 'presentation/pages/tv_series_detail_page.dart';
 
 // TEST COMMIT TO TRIGGER CODEMAGIC
 
-void main() {
+void main() async{
+
+  await SSLHelper.initializing();
+
   di.init();
   runApp(MyApp());
 }
