@@ -23,6 +23,8 @@ import 'presentation/bloc/tvSeries/tv_series_bloc.dart';
 import 'presentation/pages/top_rated_tv_series_page.dart';
 import 'presentation/pages/tv_series_detail_page.dart';
 
+// TEST COMMIT TO TRIGGER CODEMAGIC
+
 void main() {
   di.init();
   runApp(MyApp());
