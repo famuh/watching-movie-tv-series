@@ -11,6 +11,7 @@ import 'package:ditonton/presentation/pages/tv_series_now_playing.dart';
 import 'package:ditonton/presentation/pages/tv_series_page.dart';
 import 'package:ditonton/presentation/pages/tv_series_search_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
 import 'common/ssl_helper.dart';
+import 'firebase_options.dart';
 import 'presentation/bloc/movie/movie_bloc.dart';
 import 'presentation/bloc/tvSeries/tv_series_bloc.dart';
 import 'presentation/pages/top_rated_tv_series_page.dart';
@@ -26,12 +28,13 @@ import 'presentation/pages/tv_series_detail_page.dart';
 
 // TEST COMMIT TO TRIGGER CODEMAGIC
 
-void main() async{
- WidgetsFlutterBinding.ensureInitialized();
-
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+    );
 
   await SSLHelper.initializing();
-  
 
   di.init();
   runApp(MyApp());
@@ -59,7 +62,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<TvSeriesRecommendationBloc>()),
         BlocProvider(create: (_) => di.locator<SearchTvSeriesBloc>()),
         BlocProvider(create: (_) => di.locator<WatchlistTvSeriesBloc>()),
-
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
