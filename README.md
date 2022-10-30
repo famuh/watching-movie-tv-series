@@ -50,3 +50,25 @@ Jika kamu menerapkan modular pada project, Anda dapat memanfaatkan berkas `test.
     Proses ini akan men-*generate* berkas `lcov.info` dan folder `coverage` terkait dengan laporan coverage.
 4. Tunggu proses testing selesai hingga muncul web terkait laporan coverage.
 
+## ----------------- KELENGKAPAN BERKAS SUBMISSION ---------------
+
+
+### Link Github :
+https://github.com/famuh/watching-movie-tv-series
+
+### Continuous Integration menggunakan Codemagic :
+![image](https://user-images.githubusercontent.com/98727707/198863051-84e3ca54-3819-413d-a0f4-c292b0e1f374.png)
+![image](https://user-images.githubusercontent.com/98727707/198863199-203ddd94-6930-4914-9ebe-5f89f71eca37.png)
+
+### Firebase Crashlytics : 
+![image](https://user-images.githubusercontent.com/98727707/198862874-adc5e3fd-697b-47fe-b142-ca35bbf5a1ff.png)
+
+### Setelah ditambahkan code utk mentrigger crashlytics :
+![image](https://user-images.githubusercontent.com/98727707/198862934-dd163001-a429-43dd-b7f2-bace433b7bb2.png)
+![image](https://user-images.githubusercontent.com/98727707/198862969-0ef3f4ab-e139-4b6e-93fb-8e094b48d873.png)
+
+### Firebase Analytics :
+![image](https://user-images.githubusercontent.com/98727707/198863021-355e7dcf-80cd-48f9-8965-1bfe633a92b3.png)
+
+
+
