@@ -53,9 +53,6 @@ Jika kamu menerapkan modular pada project, Anda dapat memanfaatkan berkas `test.
 ## ----------------- KELENGKAPAN BERKAS SUBMISSION ---------------
 
 
-### Link Github :
-https://github.com/famuh/watching-movie-tv-series
-
 ### Continuous Integration menggunakan Codemagic :
 ![image](https://user-images.githubusercontent.com/98727707/198863051-84e3ca54-3819-413d-a0f4-c292b0e1f374.png)
 ![image](https://user-images.githubusercontent.com/98727707/198863199-203ddd94-6930-4914-9ebe-5f89f71eca37.png)
