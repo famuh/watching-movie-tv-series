@@ -27,8 +27,11 @@ import 'presentation/pages/tv_series_detail_page.dart';
 // TEST COMMIT TO TRIGGER CODEMAGIC
 
 void main() async{
+ WidgetsFlutterBinding.ensureInitialized();
+
 
   await SSLHelper.initializing();
+  
 
   di.init();
   runApp(MyApp());

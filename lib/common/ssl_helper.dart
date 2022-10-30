@@ -18,9 +18,9 @@ class SSLHelper {
   static Future<IOClient> createIoClient() async {
     final context = SecurityContext(withTrustedRoots: false);
     final cert = await rootBundle.load('certificates/certificate.pem');
+    
 
     final httpClient = HttpClient(context: context);
-
     context.setTrustedCertificatesBytes(cert.buffer.asUint8List());
 
     httpClient.badCertificateCallback =
