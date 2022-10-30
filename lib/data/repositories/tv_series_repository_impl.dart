@@ -20,7 +20,7 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
     required this.localDataSource,
   });
 
-   @override
+  @override
   Future<Either<Failure, List<TvSeries>>> getNowPlayingTvSeries() async {
     try {
       final result = await remoteDataSource.getNowPlayingTvSeries();
@@ -29,6 +29,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
     }
   }
 
@@ -41,6 +43,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    }on TlsException {
+      return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
     }
   }
 
@@ -53,6 +57,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    }on TlsException {
+      return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
     }
   }
 
@@ -65,11 +71,14 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    }on TlsException {
+      return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
     }
   }
 
   @override
-  Future<Either<Failure, List<TvSeries>>> getTvSeriesRecommendations(int id) async {
+  Future<Either<Failure, List<TvSeries>>> getTvSeriesRecommendations(
+      int id) async {
     try {
       final result = await remoteDataSource.getTvSeriesRecommendations(id);
       return Right(result.map((model) => model.toEntity()).toList());
@@ -77,6 +86,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    }on TlsException {
+      return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
     }
   }
 
@@ -89,25 +100,29 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    }on TlsException {
+      return Left(SSLFailure('CERTIFICATE_VERIFY_FAILED'));
     }
   }
 
   @override
-  Future<Either<Failure, String>> removeWatchlistTvSeries(TvSeriesDetail tvSeries) async {
+  Future<Either<Failure, String>> removeWatchlistTvSeries(
+      TvSeriesDetail tvSeries) async {
     try {
-      final result =
-          await localDataSource.removeWatchlistForTvSeries(TvSeriesTable.fromEntity(tvSeries));
+      final result = await localDataSource
+          .removeWatchlistForTvSeries(TvSeriesTable.fromEntity(tvSeries));
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     }
   }
 
-   @override
-  Future<Either<Failure, String>> saveWatchlistTvSeries(TvSeriesDetail tvSeries) async {
+  @override
+  Future<Either<Failure, String>> saveWatchlistTvSeries(
+      TvSeriesDetail tvSeries) async {
     try {
-      final result =
-          await localDataSource.insertWatchlistForTvSeries(TvSeriesTable.fromEntity(tvSeries));
+      final result = await localDataSource
+          .insertWatchlistForTvSeries(TvSeriesTable.fromEntity(tvSeries));
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
