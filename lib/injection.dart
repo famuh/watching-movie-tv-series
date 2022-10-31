@@ -53,19 +53,19 @@ void init() {
 
   // Tv Series BloC
   locator.registerFactory(() => NowPlayingTvSeriesBloc(locator()));
-  locator.registerFactory(() => PopularTvSeriesBloc(locator()));
   locator.registerFactory(() => TopRatedTvSeriesBloc(locator()));
+  locator.registerFactory(() => PopularTvSeriesBloc(locator()));
   locator.registerFactory(() => TvSeriesDetailBloc(locator()));
   locator.registerFactory(() => TvSeriesRecommendationBloc(locator()));
   locator.registerFactory(() => SearchTvSeriesBloc(locator()));
   locator.registerFactory(() => WatchlistTvSeriesBloc(
-        locator(), 
-        locator(), 
-        locator(), 
-        locator()
+        locator(),
+        locator(),
+        locator(),
+        locator(),
       ));
 
-  // use case movies
+  // use case movie
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
   locator.registerLazySingleton(() => GetPopularMovies(locator()));
   locator.registerLazySingleton(() => GetTopRatedMovies(locator()));
@@ -119,4 +119,5 @@ void init() {
 
   // external
   locator.registerLazySingleton(() => SSLHelper.client);
+  // locator.registerLazySingleton(() => http.Client());
 }

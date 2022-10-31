@@ -30,12 +30,10 @@ import 'presentation/pages/tv_series_detail_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SSLHelper.initializing();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
     );
-
-  await SSLHelper.initializing();
-
   di.init();
   runApp(MyApp());
 }
