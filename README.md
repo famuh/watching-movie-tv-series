@@ -54,8 +54,10 @@ Jika kamu menerapkan modular pada project, Anda dapat memanfaatkan berkas `test.
 ## ----------------- KELENGKAPAN BERKAS SUBMISSION ---------------
 
 ### Continuous Integration menggunakan Codemagic :
-![image](https://user-images.githubusercontent.com/98727707/198863051-84e3ca54-3819-413d-a0f4-c292b0e1f374.png)
-![image](https://user-images.githubusercontent.com/98727707/198863199-203ddd94-6930-4914-9ebe-5f89f71eca37.png)
+![image](https://user-images.githubusercontent.com/98727707/198929514-b424d78f-6d99-4324-9af7-9438324dfe81.png)
+![image](https://user-images.githubusercontent.com/98727707/198930193-36020452-597e-423a-86c3-606a657f1af0.png)
+![image](https://user-images.githubusercontent.com/98727707/198930245-8272616f-4bd8-4d11-a075-8e52265d8fee.png)
+
 
 ### Firebase Crashlytics : 
 ![image](https://user-images.githubusercontent.com/98727707/198862874-adc5e3fd-697b-47fe-b142-ca35bbf5a1ff.png)
